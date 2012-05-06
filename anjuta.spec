@@ -1,52 +1,54 @@
 %define url_ver %(echo %{version} | cut -c 1-3)
-%define major	0
+
+%define major		0
 %define api		3
-%define gir_major	3.0
+%define gi_major	3.0
 
 %define libname		%mklibname %{name} %{api} %{major}
-%define develname	%mklibname %{name} %{api} -d
-%define girname		%mklibname %{name}-gir %{gir_major}
+%define libnamedev	%mklibname %{name} %{api} -d
+%define girname		%mklibname %{name}-gir %{gi_major}
 
-Summary:	Integrated development environment for C and C++ (Linux)
-Name:		anjuta
-Version:	3.2.2
-Release:	1
-License:	GPLv2+
-Group:		Development/Other
-URL:		http://anjuta.sourceforge.net/
-Source0:	http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		anjuta-3.2.1-format-strings.patch
-
-BuildRequires:	autogen
-BuildRequires:	bison
-BuildRequires:	flex
-BuildRequires:	gnome-common
-BuildRequires:	gettext-devel
-BuildRequires:  gtk-doc
-BuildRequires:  gnome-doc-utils
-BuildRequires:  imagemagick
-BuildRequires:  intltool
-BuildRequires:	gobject-introspection-devel
-BuildRequires:	subversion-devel
-BuildRequires:	vala-devel
-BuildRequires:	desktop-file-utils
+Summary:        Integrated development environment for C and C++ (Linux)
+Name:           anjuta
+Version:        3.4.1
+Release:        %mkrel 1
+License:        GPLv2+
+Group:          Development/Other
+URL:            http://anjuta.sourceforge.net/
+Source0:        http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig(apr-1)
 BuildRequires:  pkgconfig(apr-util-1)
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gdl-3.0)
-BuildRequires:  pkgconfig(gladeui-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
-BuildRequires:  pkgconfig(libdevhelp-3.0)
-BuildRequires:  pkgconfig(libgda-4.0)
-BuildRequires:  pkgconfig(libgraph)
-BuildRequires:  pkgconfig(libgvc)
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.0.0
+BuildRequires:  pkgconfig(gdl-3.0) >= 2.91.4
+BuildRequires:  pkgconfig(gio-2.0) >= 2.28.0
+BuildRequires:  pkgconfig(gladeui-2.0) >= 3.9.2
+BuildRequires:  pkgconfig(glib-2.0) >= 2.28.0
+BuildRequires:	pkgconfig(gmodule-2.0) >= 2.28.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.22.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
+BuildRequires:  pkgconfig(gtksourceview-3.0) >= 2.91.8
+BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.0.0
+BuildRequires:  pkgconfig(libgda-4.0) >= 4.2.0
+BuildRequires:  pkgconfig(libgraph) >= 1.0
+BuildRequires:  pkgconfig(libgvc) >= 1.0
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.23
 BuildRequires:  pkgconfig(neon)
-BuildRequires:  pkgconfig(vte-2.90)
+BuildRequires:  pkgconfig(vte-2.90) >= 0.27.6
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xrender)
+BuildRequires:	subversion-devel >= 1.5.0
+BuildRequires:	autogen
+BuildRequires:	gnome-common
+BuildRequires:	gettext-devel
+BuildRequires:  intltool
+BuildRequires:  gtk-doc >= 1.0
+BuildRequires:  gnome-doc-utils >= 0.4.2
+BuildRequires:	gobject-introspection-devel
+BuildRequires:  imagemagick
+BuildRequires:	flex
+BuildRequires:	bison
+BuildRequires:	vala-devel
+BuildRequires:	desktop-file-utils
 
 Requires:       autogen
 Requires:       python-rope
@@ -60,49 +62,49 @@ syntax highlighting, intellisense autocompletions, symbol navigation,
 version controls, integrated GUI designing and other tools.
 
 %package -n %{libname}
-Summary:	Anjuta libraries
-Group:		System/Libraries
+Summary:        Anjuta libraries
+Group:          System/Libraries
+Conflicts:	%{mklibname %{name} 0} < 3.1.3
 
 %description -n %{libname}
 Anjuta libraries
 
-%package -n %{develname}
-Summary:	Anjuta devel files
-Group:		Development/Other
-Requires:	%{libname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
+%package -n %{libnamedev}
+Summary:        Anjuta devel files
+Group:          Development/Other
+Requires:       %{libname} = %{version}-%{release}
+Provides:	lib%{name}-devel = %{version}-%{release}
+Provides:       %{name}-devel = %{version}-%{release}
+Provides:	%{mklibname -d %{name}} = %{version}-%{release}
+Obsoletes:	%{mklibname -d %{name}} < %{version}-%{release}
 
-%description -n %{develname}
+%description -n %{libnamedev}
 Anjuta devel files
 
 %package -n %{girname}
-Summary:	GObject Introspection interface description for %{name}
-Group:		System/Libraries
-Requires:	%{libname} = %{version}-%{release}
+Summary:        GObject Introspection interface description for %{name}
+Group:          System/Libraries
+Requires:       %{libname} = %{version}-%{release}
 
 %description -n %{girname}
 GObject Introspection interface description for %{name}.
 
 %prep
 %setup -q
-%apply_patches
 
 %build
 %configure2_5x \
     --disable-static \
     --enable-introspection=yes
-
-%make LIBS='-lgmodule-2.0 -lutil'
+%make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 desktop-file-install --vendor="" \
-	--remove-key='Encoding' \
-	--add-category="IDE" \
-	--dir %{buildroot}%{_datadir}/applications \
-	%{buildroot}%{_datadir}/applications/*
+  --remove-key='Encoding' \
+  --add-category="IDE" \
+  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -130,14 +132,13 @@ rm -fr %{buildroot}%{_docdir}/%{name}
 %{_libdir}/lib%{name}-%{api}.so.%{major}*
 
 %files -n %{girname}
-%{_libdir}/girepository-1.0/Anjuta-%{gir_major}.typelib
-%{_libdir}/girepository-1.0/IAnjuta-%{gir_major}.typelib
+%{_libdir}/girepository-1.0/Anjuta-%{gi_major}.typelib
+%{_libdir}/girepository-1.0/IAnjuta-%{gi_major}.typelib
 
-%files -n %{develname}
+%files -n %libnamedev
 %doc %{_datadir}/gtk-doc/html/lib%{name}
 %{_libdir}/lib%{name}-%{api}.so
 %{_includedir}/lib%{name}-3.0
 %{_libdir}/pkgconfig/lib%{name}-3.0.pc
-%{_datadir}/gir-1.0/Anjuta-%{gir_major}.gir
-%{_datadir}/gir-1.0/IAnjuta-%{gir_major}.gir
-
+%{_datadir}/gir-1.0/Anjuta-%{gi_major}.gir
+%{_datadir}/gir-1.0/IAnjuta-%{gi_major}.gir
