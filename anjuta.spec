@@ -11,7 +11,7 @@
 Summary:        Integrated development environment for C and C++ (Linux)
 Name:           anjuta
 Version:        3.4.2
-Release:        %mkrel 1
+Release:        1
 License:        GPLv2+
 Group:          Development/Other
 URL:            http://anjuta.sourceforge.net/
@@ -25,6 +25,7 @@ BuildRequires:	gnome-common
 BuildRequires:  gtk-doc >= 1.0
 BuildRequires:  imagemagick
 BuildRequires:  intltool
+BuildRequires:  vala
 BuildRequires:	gettext-devel
 BuildRequires:	subversion-devel >= 1.5.0
 BuildRequires:	vala-devel
