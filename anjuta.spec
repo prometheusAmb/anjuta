@@ -10,7 +10,7 @@
 
 Summary:        Integrated development environment for C and C++ (Linux)
 Name:           anjuta
-Version:        3.4.4
+Version:        3.6.2
 Release:        1
 License:        GPLv2+
 Group:          Development/Other
@@ -18,6 +18,7 @@ URL:            http://anjuta.sourceforge.net/
 Source0:        http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	autogen
+BuildRequires:	itstool
 BuildRequires:	bison
 BuildRequires:	desktop-file-utils
 BuildRequires:	flex
@@ -139,4 +140,26 @@ rm -fr %{buildroot}%{_docdir}/%{name}
 %{_libdir}/pkgconfig/lib%{name}-3.0.pc
 %{_datadir}/gir-1.0/Anjuta-%{girmajor}.gir
 %{_datadir}/gir-1.0/IAnjuta-%{girmajor}.gir
+
+
+
+%changelog
+* Wed Aug 01 2012 Matthew Dawkins <mattydaw@mandriva.org> 3.4.4-1
++ Revision: 811506
+- update to new version 3.4.4
+
+* Tue May 22 2012 Götz Waschk <waschk@mandriva.org> 3.4.3-1
++ Revision: 799991
+- update to new version 3.4.3
+
+* Fri May 18 2012 Matthew Dawkins <mattydaw@mandriva.org> 3.4.2-1
++ Revision: 799454
+- update to new version 3.4.2
+
+  + Alexander Khrukin <akhrukin@mandriva.org>
+    - verson update 3.4.1
+
+* Thu Mar 15 2012 Matthew Dawkins <mattydaw@mandriva.org> 3.2.2-1
++ Revision: 785034
+- imported package anjuta
 
