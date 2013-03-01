@@ -11,7 +11,7 @@
 Summary:        Integrated development environment for C and C++ (Linux)
 Name:           anjuta
 Version:        3.6.2
-Release:        1
+Release:        2
 License:        GPLv2+
 Group:          Development/Other
 URL:            http://anjuta.sourceforge.net/
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(gtksourceview-3.0) >= 2.91.8
 BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libgda-4.0) >= 4.2.0
-BuildRequires:  pkgconfig(libgraph) >= 1.0
+BuildRequires:  pkgconfig(libcgraph) >= 1.0
 BuildRequires:  pkgconfig(libgvc) >= 1.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.23
 BuildRequires:  pkgconfig(neon)
