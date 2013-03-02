@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(libcgraph) >= 1.0
 BuildRequires:  pkgconfig(libgvc) >= 1.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.23
 BuildRequires:  pkgconfig(neon)
-BuildRequires:  pkgconfig(vte-2.90) >= 0.27.6
+BuildRequires:  pkgconfig(vte) >= 0.28.0
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xrender)
 
