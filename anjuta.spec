@@ -11,11 +11,12 @@
 Summary:        Integrated development environment for C and C++ (Linux)
 Name:           anjuta
 Version:        3.6.2
-Release:        2
+Release:        3
 License:        GPLv2+
 Group:          Development/Other
 URL:            http://anjuta.sourceforge.net/
 Source0:        http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Patch0:		anjuta-3.6.2-dont-use-internal-autoconf-variables.patch
 
 BuildRequires:	autogen
 BuildRequires:	itstool
@@ -88,6 +89,11 @@ GObject Introspection interface description for %{name}.
 
 %prep
 %setup -q
+%apply_patches
+
+aclocal
+automake -a
+autoconf
 
 %build
 %configure2_5x \
