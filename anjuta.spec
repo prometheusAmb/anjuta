@@ -41,7 +41,7 @@ BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(gtksourceview-3.0) >= 2.91.8
 BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(libgda) >= 4.2.0
+BuildRequires:  pkgconfig(libgda-5.0)
 BuildRequires:  pkgconfig(libcgraph) >= 1.0
 BuildRequires:  pkgconfig(libgvc) >= 1.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.23
