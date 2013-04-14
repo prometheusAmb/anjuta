@@ -100,7 +100,7 @@ autoconf
 %configure2_5x \
     --disable-static \
     --enable-introspection=yes
-%make LIBS="-lrt"
+%make LIBS="-lrt -lutil"
 
 %install
 %makeinstall_std
