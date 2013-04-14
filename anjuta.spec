@@ -1,4 +1,5 @@
 %define url_ver %(echo %{version} | cut -c 1-3)
+%define _disable_ld_no_undefined 1
 
 %define major		0
 %define api		3
