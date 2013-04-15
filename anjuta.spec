@@ -51,6 +51,7 @@ BuildRequires:  pkgconfig(neon)
 BuildRequires:  pkgconfig(vte-2.90) >= 0.29.0
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xrender)
+BuildRequires:	yelp-tools yelp yelp-devel
 
 Requires:       autogen
 Requires:       python-rope
