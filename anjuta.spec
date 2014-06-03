@@ -1,23 +1,24 @@
 %define url_ver %(echo %{version} | cut -c 1-3)
 %define _disable_ld_no_undefined 1
 
-%define major		0
-%define api		3
-%define girmajor	3.0
+%define major 0
+%define api 3
+%define girmajor 3.0
 
-%define libname		%mklibname %{name} %{api} %{major}
-%define develname	%mklibname %{name} %{api} -d
-%define girname		%mklibname %{name}-gir %{girmajor}
+%define libname %mklibname %{name} %{api} %{major}
+%define develname %mklibname %{name} %{api} -d
+%define girname %mklibname %{name}-gir %{girmajor}
 
-Summary:        Integrated development environment for C and C++ (Linux)
-Name:           anjuta
-Version:        3.6.2
-Release:        8
-License:        GPLv2+
-Group:          Development/Other
-URL:            http://anjuta.sourceforge.net/
-Source0:        http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		anjuta-3.6.2-dont-use-internal-autoconf-variables.patch
+Summary:		Integrated development environment for C and C++ (Linux)
+Name:			anjuta
+Version:		3.6.2
+Release:		9
+License:		GPLv2+
+Group:			Development/Other
+URL:			http://anjuta.sourceforge.net/
+Source0:		http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Source1:		anjuta.rpmlintrc
+Patch0:			anjuta-3.6.2-dont-use-internal-autoconf-variables.patch
 
 BuildRequires:	autogen
 BuildRequires:	itstool
@@ -25,36 +26,36 @@ BuildRequires:	bison
 BuildRequires:	desktop-file-utils
 BuildRequires:	flex
 BuildRequires:	gnome-common
-BuildRequires:  gtk-doc >= 1.0
-BuildRequires:  imagemagick
-BuildRequires:  intltool
-BuildRequires:  vala
+BuildRequires:	gtk-doc >= 1.0
+BuildRequires:	imagemagick
+BuildRequires:	intltool
+BuildRequires:	vala
 BuildRequires:	gettext-devel
 BuildRequires:	subversion-devel >= 1.5.0
 BuildRequires:	vala-devel
-BuildRequires:  pkgconfig(apr-1)
-BuildRequires:  pkgconfig(apr-util-1)
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.0.0
-BuildRequires:  pkgconfig(gdl-3.0) >= 2.91.4
-BuildRequires:  pkgconfig(gladeui-2.0) >= 3.9.2
-BuildRequires:  pkgconfig(glib-2.0) >= 2.28.0
-BuildRequires:  pkgconfig(gnome-doc-utils) >= 0.4.2
+BuildRequires:	pkgconfig(apr-1)
+BuildRequires:	pkgconfig(apr-util-1)
+BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= 2.0.0
+BuildRequires:	pkgconfig(gdl-3.0) >= 2.91.4
+BuildRequires:	pkgconfig(gladeui-2.0) >= 3.9.2
+BuildRequires:	pkgconfig(glib-2.0) >= 2.28.0
+BuildRequires:	pkgconfig(gnome-doc-utils) >= 0.4.2
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(gtksourceview-3.0) >= 2.91.8
-BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(libgda-5.0)
-BuildRequires:  pkgconfig(libcgraph) >= 1.0
-BuildRequires:  pkgconfig(libgvc) >= 1.0
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.23
-BuildRequires:  pkgconfig(neon)
-BuildRequires:  pkgconfig(vte-2.90) >= 0.29.0
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xrender)
+BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0.0
+BuildRequires:	pkgconfig(gtksourceview-3.0) >= 2.91.8
+BuildRequires:	pkgconfig(libdevhelp-3.0) >= 3.0.0
+BuildRequires:	pkgconfig(libgda-5.0)
+BuildRequires:	pkgconfig(libcgraph) >= 1.0
+BuildRequires:	pkgconfig(libgvc) >= 1.0
+BuildRequires:	pkgconfig(libxml-2.0) >= 2.4.23
+BuildRequires:	pkgconfig(neon)
+BuildRequires:	pkgconfig(vte-2.90) >= 0.29.0
+BuildRequires:	pkgconfig(xext)
+BuildRequires:	pkgconfig(xrender)
 BuildRequires:	yelp-tools yelp yelp-devel
 
-Requires:       autogen
-Requires:       python-rope
+Requires:	autogen
+Requires:	python-rope
 
 %description
 Anjuta DevStudio is a versatile Integrated Development Environment (IDE)
@@ -65,26 +66,26 @@ syntax highlighting, intellisense autocompletions, symbol navigation,
 version controls, integrated GUI designing and other tools.
 
 %package -n %{libname}
-Summary:        Anjuta libraries
-Group:          System/Libraries
+Summary:	Anjuta libraries
+Group:		System/Libraries
 Conflicts:	%{mklibname %{name} 0} < 3.1.3
 
 %description -n %{libname}
-Anjuta libraries
+Anjuta libraries.
 
 %package -n %{develname}
-Summary:        Anjuta devel files
-Group:          Development/Other
-Requires:       %{libname} = %{version}-%{release}
-Requires:       %{girname} = %{version}-%{release}
-Provides:       %{name}-devel = %{version}-%{release}
+Summary:	Anjuta devel files
+Group:		Development/Other
+Requires:	%{libname} = %{version}-%{release}
+Requires:	%{girname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{develname}
-Anjuta devel files
+Anjuta devel files.
 
 %package -n %{girname}
-Summary:        GObject Introspection interface description for %{name}
-Group:          System/Libraries
+Summary:	GObject Introspection interface description for %{name}
+Group:		System/Libraries
 
 %description -n %{girname}
 GObject Introspection interface description for %{name}.
@@ -98,9 +99,10 @@ automake -a
 autoconf
 
 %build
-%configure2_5x \
+%configure \
     --disable-static \
     --enable-introspection=yes
+
 %make LIBS="-lrt -lutil"
 
 %install
@@ -148,26 +150,3 @@ rm -fr %{buildroot}%{_docdir}/%{name}
 %{_libdir}/pkgconfig/lib%{name}-3.0.pc
 %{_datadir}/gir-1.0/Anjuta-%{girmajor}.gir
 %{_datadir}/gir-1.0/IAnjuta-%{girmajor}.gir
-
-
-
-%changelog
-* Wed Aug 01 2012 Matthew Dawkins <mattydaw@mandriva.org> 3.4.4-1
-+ Revision: 811506
-- update to new version 3.4.4
-
-* Tue May 22 2012 Götz Waschk <waschk@mandriva.org> 3.4.3-1
-+ Revision: 799991
-- update to new version 3.4.3
-
-* Fri May 18 2012 Matthew Dawkins <mattydaw@mandriva.org> 3.4.2-1
-+ Revision: 799454
-- update to new version 3.4.2
-
-  + Alexander Khrukin <akhrukin@mandriva.org>
-    - verson update 3.4.1
-
-* Thu Mar 15 2012 Matthew Dawkins <mattydaw@mandriva.org> 3.2.2-1
-+ Revision: 785034
-- imported package anjuta
-
