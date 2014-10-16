@@ -11,14 +11,13 @@
 
 Summary:		Integrated development environment for C and C++ (Linux)
 Name:			anjuta
-Version:		3.6.2
-Release:		11
+Version:		3.14.0
+Release:		1
 License:		GPLv2+
 Group:			Development/Other
 URL:			http://anjuta.sourceforge.net/
 Source0:		http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 Source1:		anjuta.rpmlintrc
-Patch0:			anjuta-3.6.2-dont-use-internal-autoconf-variables.patch
 
 BuildRequires:	autogen
 BuildRequires:	itstool
@@ -49,7 +48,7 @@ BuildRequires:	pkgconfig(libcgraph) >= 1.0
 BuildRequires:	pkgconfig(libgvc) >= 1.0
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.4.23
 BuildRequires:	pkgconfig(neon)
-BuildRequires:	pkgconfig(vte-2.90) >= 0.29.0
+BuildRequires:	pkgconfig(vte-2.91) >= 0.29.0
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:	yelp-tools yelp yelp-devel
@@ -94,14 +93,10 @@ GObject Introspection interface description for %{name}.
 %setup -q
 %apply_patches
 
-aclocal
-automake -a
-autoconf
-
 %build
 %configure \
-    --disable-static \
-    --enable-introspection=yes
+	--enable-introspection=yes \
+	--enable-compile-warnings=no
 
 %make LIBS="-lrt -lutil"
 
@@ -125,16 +120,16 @@ rm -fr %{buildroot}%{_docdir}/%{name}
 %files -f %{name}.lang
 %{_bindir}/*
 %{_libdir}/%{name}
-%{_libdir}/glade/modules/libgladeanjuta.so
-%{_datadir}/glade/catalogs/anjuta-glade.xml
 %{_datadir}/%{name}
+%{_datadir}/appdata/anjuta.appdata.xml
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/applications/*.desktop
-%{_datadir}/icons/gnome/*/mimetypes/*
 %{_mandir}/man1/%{name}*.1*
 %{_datadir}/mime/packages/anjuta.xml
 %{_datadir}/pixmaps/%{name}
 %{_datadir}/icons/hicolor/*/apps/*
+%{_datadir}/icons/hicolor/*/mimetypes/*
+%{_datadir}/icons/HighContrast/*/apps/*
 
 %files -n %{libname}
 %{_libdir}/lib%{name}-%{api}.so.%{major}*

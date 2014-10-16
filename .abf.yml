@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   anjuta-3.6.2.tar.xz: d521aea301ca9c428a8b627c9fa491cba5d5e17c
+sources:
+  anjuta-3.14.0.tar.xz: d7988414cdd52675a973744a60346e541555d3d0
