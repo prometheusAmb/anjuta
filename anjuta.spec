@@ -1,5 +1,6 @@
 %define url_ver %(echo %{version} | cut -c 1-3)
 %define _disable_ld_no_undefined 1
+%define _disable_rebuild_configure 1
 
 %define major 0
 %define api 3
@@ -11,8 +12,8 @@
 
 Summary:		Integrated development environment for C and C++ (Linux)
 Name:			anjuta
-Version:		 3.16.0
-Release:		4
+Version:		3.18.2
+Release:		1
 License:		GPLv2+
 Group:			Development/Other
 URL:			http://anjuta.sourceforge.net/
@@ -129,7 +130,6 @@ rm -fr %{buildroot}%{_docdir}/%{name}
 %{_datadir}/pixmaps/%{name}
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/hicolor/*/mimetypes/*
-%{_datadir}/icons/HighContrast/*/apps/*
 
 %files -n %{libname}
 %{_libdir}/lib%{name}-%{api}.so.%{major}*
