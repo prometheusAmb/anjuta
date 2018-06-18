@@ -1,4 +1,4 @@
-%define url_ver %(echo %{version} | cut -c 1-3)
+%define url_ver %(echo %{version} | cut -d. -f1-2)
 %define _disable_ld_no_undefined 1
 %define _disable_rebuild_configure 1
 
@@ -12,8 +12,8 @@
 
 Summary:		Integrated development environment for C and C++ (Linux)
 Name:			anjuta
-Version:		3.18.2
-Release:		3
+Version:		3.28.0
+Release:		1
 License:		GPLv2+
 Group:			Development/Other
 URL:			http://anjuta.sourceforge.net/
