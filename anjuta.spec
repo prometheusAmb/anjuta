@@ -55,6 +55,8 @@ BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:	yelp-tools yelp yelp-devel
 
+BuildRequires:	python3egg(rope)
+
 Requires:	autogen
 Requires:	python-rope
 
@@ -123,7 +125,7 @@ rm -fr %{buildroot}%{_docdir}/%{name}
 %{_bindir}/*
 %{_libdir}/%{name}
 %{_datadir}/%{name}
-%{_datadir}/appdata/anjuta.appdata.xml
+%{_datadir}/metainfo/anjuta.appdata.xml
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/applications/*.desktop
 %{_mandir}/man1/%{name}*.1*
