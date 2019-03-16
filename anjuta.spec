@@ -59,6 +59,7 @@ BuildRequires:	python3egg(rope)
 
 Requires:	autogen
 Requires:	python-rope
+Requires:	typelib(St)
 
 %description
 Anjuta DevStudio is a versatile Integrated Development Environment (IDE)
