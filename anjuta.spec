@@ -29,6 +29,7 @@ BuildRequires:	gnome-common
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	imagemagick
 BuildRequires:	intltool
+BuildRequires:	openldap-devel
 BuildRequires:	vala
 BuildRequires:	gettext-devel
 BuildRequires:	subversion-devel >= 1.5.0
