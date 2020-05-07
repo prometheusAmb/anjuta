@@ -12,8 +12,8 @@
 
 Summary:		Integrated development environment for C and C++ (Linux)
 Name:			anjuta
-Version:		3.28.0
-Release:		3
+Version:		3.34.0
+Release:		1
 License:		GPLv2+
 Group:			Development/Other
 URL:			http://anjuta.sourceforge.net/
@@ -54,12 +54,11 @@ BuildRequires:	pkgconfig(vte-2.91) >= 0.29.0
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:	yelp-tools yelp yelp-devel
-
-BuildRequires:	python3egg(rope)
+BuildRequires:	python3dist(rope)
 
 Requires:	autogen
 Requires:	python-rope
-Requires:	typelib(St)
+#Requires:	typelib(St)
 
 %description
 Anjuta DevStudio is a versatile Integrated Development Environment (IDE)
@@ -103,10 +102,10 @@ GObject Introspection interface description for %{name}.
 	--enable-introspection=yes \
 	--enable-compile-warnings=no
 
-%make LIBS="-lrt -lutil"
+%make_build LIBS="-lrt -lutil"
 
 %install
-%makeinstall_std
+%make_install
 
 desktop-file-install --vendor="" \
 	--remove-key='Encoding' \
