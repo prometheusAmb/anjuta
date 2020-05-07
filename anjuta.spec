@@ -54,8 +54,7 @@ BuildRequires:	pkgconfig(vte-2.91) >= 0.29.0
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:	yelp-tools yelp yelp-devel
-
-BuildRequires:	python3egg(rope)
+BuildRequires:	python3dist(rope)
 
 Requires:	autogen
 Requires:	python-rope
