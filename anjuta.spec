@@ -58,7 +58,7 @@ BuildRequires:	python3dist(rope)
 
 Requires:	autogen
 Requires:	python-rope
-Requires:	typelib(St)
+#Requires:	typelib(St)
 
 %description
 Anjuta DevStudio is a versatile Integrated Development Environment (IDE)
@@ -102,10 +102,10 @@ GObject Introspection interface description for %{name}.
 	--enable-introspection=yes \
 	--enable-compile-warnings=no
 
-%make LIBS="-lrt -lutil"
+%make_build LIBS="-lrt -lutil"
 
 %install
-%makeinstall_std
+%make_install
 
 desktop-file-install --vendor="" \
 	--remove-key='Encoding' \
