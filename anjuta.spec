@@ -12,8 +12,8 @@
 
 Summary:		Integrated development environment for C and C++ (Linux)
 Name:			anjuta
-Version:		3.28.0
-Release:		3
+Version:		3.34.0
+Release:		1
 License:		GPLv2+
 Group:			Development/Other
 URL:			http://anjuta.sourceforge.net/
