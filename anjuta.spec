@@ -16,7 +16,7 @@ Version:		3.34.0
 Release:		2
 License:		GPLv2+
 Group:			Development/Other
-URL:			http://anjuta.sourceforge.net/
+URL:			https://anjuta.sourceforge.net/
 Source0:		http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 Source1:		anjuta.rpmlintrc
 
